@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- Атрибуты lang и dir будут установлены через JS -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор комбинаций для Лото</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключаем шрифт, который хорошо поддерживает иврит -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Используем Rubik для иврита и Inter для остальных языков */
+        :lang(he) body { font-family: 'Rubik', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+    <div class="flex flex-col items-center justify-center min-h-screen p-4">
+        <div class="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center">
+            <img src="https://placehold.co/150x50/6366f1/ffffff?text=LOGO" alt="Logo" data-translate-key="logoAlt" class="mx-auto h-16 w-auto mb-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4" data-translate-key="mainHeader"></h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto" data-translate-key="introText"></p>
+            <a href="generator.html" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 px-10 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-transform transform hover:scale-105" data-translate-key="startButton"></a>
+            <div class="mt-10 text-sm text-gray-500">
+                <p class="mb-2" data-translate-key="visitorsText"></p>
+                <img src="https://placehold.co/120x30/e5e7eb/374151?text=Counter" alt="Visitor Counter" data-translate-key="counterAlt" class="mx-auto" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Логика перевода ---
+        const translations = {
+            ru: {
+                pageTitle: "Генератор комбинаций для Лото - Главная",
+                logoAlt: "Логотип",
+                mainHeader: "Увеличьте свои шансы на выигрыш!",
+                introText: 'Добро пожаловать на наш сервис по генерации комбинаций для лотереи "6 из 37". Наш алгоритм использует специальные паттерны, чтобы предложить вам сбалансированные наборы чисел. Просто введите 9 уникальных чисел, которым вы доверяете, и система создаст 12 готовых комбинаций для вашего лотерейного билета.',
+                startButton: "Начать генерацию",
+                visitorsText: "Посетителей сегодня:",
+                counterAlt: "Счетчик посещений"
+            },
+            en: {
+                pageTitle: "Lotto Combination Generator - Home",
+                logoAlt: "Logo",
+                mainHeader: "Increase Your Chances of Winning!",
+                introText: 'Welcome to our "6 out of 37" lottery combination generator. Our algorithm uses special patterns to offer you balanced sets of numbers. Just enter 9 unique numbers you trust, and the system will create 12 ready-made combinations for your lottery ticket.',
+                startButton: "Start Generating",
+                visitorsText: "Visitors today:",
+                counterAlt: "Visitor Counter"
+            },
+            he: {
+                pageTitle: "מחולל צירופים ללוטו - דף הבית",
+                logoAlt: "לוגו",
+                mainHeader: "הגדילו את סיכויי הזכייה שלכם!",
+                introText: 'ברוכים הבאים למחולל הצירופים שלנו ללוטו "6 מתוך 37". האלגוריתם שלנו משתמש בתבניות מיוחדות כדי להציע לכם סדרות מספרים מאוזנות. פשוט הזינו 9 מספרים ייחודיים שאתם סומכים עליהם, והמערכת תיצור 12 צירופים מוכנים לכרטיס הלוטו שלכם.',
+                startButton: "התחילו ליצור",
+                visitorsText: "מבקרים היום:",
+                counterAlt: "מונה מבקרים"
+            }
+        };
+
+        function getUserLanguage() {
+            const lang = navigator.language || navigator.userLanguage;
+            return lang.split('-')[0];
+        }
+
+        function applyTranslations() {
+            const lang = getUserLanguage();
+            // По умолчанию русский, если язык не найден
+            const langPack = translations[lang] || translations.ru; 
+
+            // Устанавливаем язык и направление текста для всего документа
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+            
+            document.title = langPack.pageTitle;
+
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                const key = element.getAttribute('data-translate-key');
+                if (langPack[key]) {
+                    if (element.tagName === 'IMG' || element.tagName === 'INPUT') {
+                         element.alt = langPack[key];
+                    } else {
+                        element.textContent = langPack[key];
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+    </script>
+
+</body>
+</html>
