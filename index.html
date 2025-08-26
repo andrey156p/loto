@@ -38,7 +38,7 @@
                 pageTitle: "Генератор комбинаций для Лото - Главная",
                 logoAlt: "Логотип",
                 mainHeader: "Увеличьте свои шансы на выигрыш!",
-                introText: 'Добро пожаловать на наш сервис по генерации комбинаций для лотереи "6 из 37". Наш алгоритм использует специальные паттерны, чтобы предложить вам сбалансированные наборы чисел. Просто введите 9 уникальных чисел, которым вы доверяете, и система создаст 12 готовых комбинаций для вашего лотерейного билета.',
+                introText: 'Добро пожаловать на наш сервис по генерации комбинаций для лотереи "6 из 37". Наш алгоритм использует специальные паттерны, чтобы предложить вам сбалансированные наборы чисел. Просто введите 9 уникальных чисел, и система создаст 12 готовых комбинаций. Достаточно угадать всего три номера из выбранных 9, чтобы быть в хорошем плюсе!',
                 startButton: "Начать генерацию",
                 visitorsText: "Посетителей сегодня:",
                 counterAlt: "Счетчик посещений"
@@ -47,7 +47,7 @@
                 pageTitle: "Lotto Combination Generator - Home",
                 logoAlt: "Logo",
                 mainHeader: "Increase Your Chances of Winning!",
-                introText: 'Welcome to our "6 out of 37" lottery combination generator. Our algorithm uses special patterns to offer you balanced sets of numbers. Just enter 9 unique numbers you trust, and the system will create 12 ready-made combinations for your lottery ticket.',
+                introText: 'Welcome to our "6 out of 37" lottery combination generator. Our algorithm uses special patterns to offer you balanced sets of numbers. Just enter 9 unique numbers you trust, and the system will create 12 ready-made combinations. It\'s enough to guess just three of the selected 9 numbers to be well in the money!',
                 startButton: "Start Generating",
                 visitorsText: "Visitors today:",
                 counterAlt: "Visitor Counter"
@@ -56,7 +56,7 @@
                 pageTitle: "מחולל צירופים ללוטו - דף הבית",
                 logoAlt: "לוגו",
                 mainHeader: "הגדילו את סיכויי הזכייה שלכם!",
-                introText: 'ברוכים הבאים למחולל הצירופים שלנו ללוטו "6 מתוך 37". האלגוריתם שלנו משתמש בתבניות מיוחדות כדי להציע לכם סדרות מספרים מאוזנות. פשוט הזינו 9 מספרים ייחודיים שאתם סומכים עליהם, והמערכת תיצור 12 צירופים מוכנים לכרטיס הלוטו שלכם.',
+                introText: 'ברוכים הבאים למחולל הצירופים שלנו ללוטו "6 מתוך 37". האלגוריתם שלנו משתמש בתבניות מיוחדות כדי להציע לכם סדרות מספרים מאוזנות. פשוט הזינו 9 מספרים ייחודיים שאתם סומכים עליהם, והמערכת תיצור 12 צירופים מוכנים. מספיק לנחש רק שלושה מספרים מתוך ה-9 שבחרתם כדי להיות ברווח יפה!',
                 startButton: "התחילו ליצור",
                 visitorsText: "מבקרים היום:",
                 counterAlt: "מונה מבקרים"
@@ -70,10 +70,8 @@
 
         function applyTranslations() {
             const lang = getUserLanguage();
-            // По умолчанию русский, если язык не найден
             const langPack = translations[lang] || translations.ru; 
 
-            // Устанавливаем язык и направление текста для всего документа
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
             
